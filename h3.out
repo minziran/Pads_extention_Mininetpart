@@ -1,0 +1,7 @@
+MapReduce Reduce Worker program
+initializing reduce worker with id:  0
+Using PULL, reduce worker connecting to  tcp://10.0.0.1:5558
+Using PUSH, reduce worker connecting to barrier at  tcp://10.0.0.1:5560
+starting work: reduce worker with id:  0  in directory:  /home/ziran/GeneratedFiles 
+reducer received a nudge to start
+reduce worker with name:  0  exiting

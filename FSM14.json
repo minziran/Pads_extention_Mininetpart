@@ -1,0 +1,198 @@
+{
+  "name": "ModifyLinks_MapReduce",
+  "InitialState": {
+    "name": "S1",
+    "MetaType": "Default_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link1",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h2",
+        "Loss": 0,
+        "Bandwidth_Mbps": 50,
+        "Latency_ms": 10
+      }
+    ]
+  },
+  "Intermediate_States": [
+    {
+      "name": "S2",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link2",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 20,
+          "Bandwidth_Mbps": 10,
+          "Latency_ms": 5
+        }
+      ]
+    },
+    {
+      "name": "S5",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link8",
+          "MetaType": "Link",
+          "Dst_node": "MRSwicth1",
+          "Src_node": "h3",
+          "Loss": 0,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 10
+        },
+        {
+          "name": "Link6",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h1",
+          "Loss": 50,
+          "Bandwidth_Mbps": 10,
+          "Latency_ms": 10
+        },
+        {
+          "name": "Link7",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h2",
+          "Loss": 0,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 20
+        }
+      ]
+    },
+    {
+      "name": "S3",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link3",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h2",
+          "Loss": 30,
+          "Bandwidth_Mbps": 10,
+          "Latency_ms": 25
+        }
+      ]
+    },
+    {
+      "name": "S4",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link4",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 10,
+          "Bandwidth_Mbps": 20,
+          "Latency_ms": 0
+        },
+        {
+          "name": "Link5",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 0,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 25
+        }
+      ]
+    }
+  ],
+  "FinalState": {
+    "name": "S6",
+    "MetaType": "Final_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link8",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h2",
+        "Loss": 0,
+        "Bandwidth_Mbps": 99,
+        "Latency_ms": 0
+      }
+    ]
+  },
+  "Guards": [
+    {
+      "name": "Guard3",
+      "MetaType": "Guard",
+      "Condition": "y=0",
+      "src": "S3",
+      "dst": "S4",
+      "timer": {
+        "name": "y",
+        "MetaType": "Deterministic_Timer",
+        "Value": 10
+      }
+    },
+    {
+      "name": "Guard4",
+      "MetaType": "Guard",
+      "Condition": "",
+      "src": "S4",
+      "dst": "S5",
+      "timer": {
+        "name": "t",
+        "MetaType": "Deterministic_Timer",
+        "Value": 12
+      }
+    },
+    {
+      "name": "Guard1",
+      "MetaType": "Guard",
+      "Condition": "t=0",
+      "src": "S1",
+      "dst": "S2",
+      "timer": {
+        "name": "t",
+        "MetaType": "Deterministic_Timer",
+        "Value": 20
+      }
+    },
+    {
+      "name": "Guard2",
+      "MetaType": "Guard",
+      "Condition": "x=0",
+      "src": "S2",
+      "dst": "S3",
+      "timer": {
+        "name": "x",
+        "MetaType": "Deterministic_Timer",
+        "Value": 10
+      }
+    },
+    {
+      "name": "Guard5",
+      "MetaType": "Guard",
+      "Condition": "",
+      "src": "S5",
+      "dst": "S6",
+      "timer": {
+        "name": "t",
+        "MetaType": "Deterministic_Timer",
+        "Value": 30
+      }
+    }
+  ]
+}

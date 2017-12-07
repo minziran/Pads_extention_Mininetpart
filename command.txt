@@ -1,0 +1,2 @@
+h2 python mr_mapworker.py 0 10.0.0.1 5557 &> h2.out &
+h3 python mr_reduceworker.py 0 10.0.0.1 5557 &> h3.out &

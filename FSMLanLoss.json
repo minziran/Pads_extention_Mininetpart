@@ -1,0 +1,113 @@
+{
+  "name": "ModifyLinks_MapReduce",
+  "InitialState": {
+    "name": "S1",
+    "MetaType": "Default_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link1",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h1",
+        "Loss": 10,
+        "Bandwidth_Mbps": 0,
+        "Latency_ms": 0
+      }
+    ]
+  },
+  "Intermediate_States": [
+    {
+      "name": "S2",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link2",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h2",
+          "Loss": 10,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 10
+        }
+      ]
+    },
+    {
+      "name": "S3",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link3",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 10,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 25
+        }
+      ]
+    }
+  ],
+  "FinalState": {
+    "name": "S4",
+    "MetaType": "Final_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link4",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h2",
+        "Loss": 0,
+        "Bandwidth_Mbps": 0,
+        "Latency_ms": 15
+      }
+    ]
+  },
+  "Guards": [
+    {
+      "name": "Guard3",
+      "MetaType": "Guard",
+      "Condition": "y=0",
+      "src": "S3",
+      "dst": "S4",
+      "timer": {
+        "name": "y",
+        "MetaType": "Deterministic_Timer",
+        "Value": 5
+      }
+    },
+    {
+      "name": "Guard1",
+      "MetaType": "Guard",
+      "Condition": "t=0",
+      "src": "S1",
+      "dst": "S2",
+      "timer": {
+        "name": "t",
+        "MetaType": "Deterministic_Timer",
+        "Value": 5
+      }
+    },
+    {
+      "name": "Guard2",
+      "MetaType": "Guard",
+      "Condition": "x=0",
+      "src": "S2",
+      "dst": "S3",
+      "timer": {
+        "name": "x",
+        "MetaType": "Deterministic_Timer",
+        "Value": 5
+      }
+    }
+  ]
+}

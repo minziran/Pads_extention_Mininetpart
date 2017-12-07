@@ -1,0 +1,7 @@
+MapReduce Map Worker program
+initializing map worker with id:  0  in directory:  /home/ziran/GeneratedFiles 
+Using PULL, map worker connecting to  tcp://10.0.0.1:5557
+Using PUSH, map worker connecting to barrier at  tcp://10.0.0.1:5559
+starting work: map worker with id:  0
+received message =  {"start": 0, "datafile": "big.txt", "size": 6488666}
+map worker with ID:  0  exiting

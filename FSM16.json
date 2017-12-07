@@ -1,0 +1,158 @@
+{
+  "name": "ModifyLinks_MapReduce",
+  "InitialState": {
+    "name": "S1",
+    "MetaType": "Default_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link5",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h1",
+        "Loss": 22,
+        "Bandwidth_Mbps": 17,
+        "Latency_ms": 37
+      },
+      {
+        "name": "Link1",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h2",
+        "Loss": 0,
+        "Bandwidth_Mbps": 50,
+        "Latency_ms": 10
+      },
+      {
+        "name": "Link9",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h1",
+        "Loss": 10,
+        "Bandwidth_Mbps": 55,
+        "Latency_ms": 10
+      }
+    ]
+  },
+  "Intermediate_States": [
+    {
+      "name": "S3",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link5",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 28,
+          "Bandwidth_Mbps": 133,
+          "Latency_ms": 27
+        },
+        {
+          "name": "Link3",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h1",
+          "Loss": 30,
+          "Bandwidth_Mbps": 100,
+          "Latency_ms": 0
+        },
+        {
+          "name": "Link4",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h2",
+          "Loss": 47,
+          "Bandwidth_Mbps": 19,
+          "Latency_ms": 24
+        }
+      ]
+    },
+    {
+      "name": "S4",
+      "MetaType": "State",
+      "scriptCode": "",
+      "Constraint": "",
+      "link": [
+        {
+          "name": "Link4",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h3",
+          "Loss": 10,
+          "Bandwidth_Mbps": 2,
+          "Latency_ms": 55
+        },
+        {
+          "name": "Link5",
+          "MetaType": "Link",
+          "Dst_node": "MRSwitch1",
+          "Src_node": "h1",
+          "Loss": 22,
+          "Bandwidth_Mbps": 0,
+          "Latency_ms": 25
+        }
+      ]
+    }
+  ],
+  "FinalState": {
+    "name": "S5",
+    "MetaType": "Final_State",
+    "scriptCode": "",
+    "Constraint": "",
+    "Constraints": "",
+    "link": [
+      {
+        "name": "Link7",
+        "MetaType": "Link",
+        "Dst_node": "MRSwitch1",
+        "Src_node": "h1",
+        "Loss": 0,
+        "Bandwidth_Mbps": 13,
+        "Latency_ms": 10
+      }
+    ]
+  },
+  "Guards": [
+    {
+      "name": "Guard3",
+      "MetaType": "Guard",
+      "Condition": "y=0",
+      "src": "S3",
+      "dst": "S4",
+      "timer": {
+        "name": "y",
+        "MetaType": "Deterministic_Timer",
+        "Value": 20
+      }
+    },
+    {
+      "name": "Guard",
+      "MetaType": "Guard",
+      "Condition": "",
+      "src": "S4",
+      "dst": "S5",
+      "timer": {
+        "name": "t",
+        "MetaType": "Deterministic_Timer",
+        "Value": 20
+      }
+    },
+    {
+      "name": "Guard2",
+      "MetaType": "Guard",
+      "Condition": "x=0",
+      "src": "S1",
+      "dst": "S3",
+      "timer": {
+        "name": "x",
+        "MetaType": "Deterministic_Timer",
+        "Value": 20
+      }
+    }
+  ]
+}
